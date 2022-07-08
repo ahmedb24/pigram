@@ -1,0 +1,19 @@
+{
+  "name": "pigram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdz24/pigram.git"
+  },
+  "author": "Ahmed B",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdz24/pigram/issues"
+  },
+  "homepage": "https://github.com/mdz24/pigram#readme"
+}
