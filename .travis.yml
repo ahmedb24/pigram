@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - docker --version # print the version for logging
+  - docker build -t pigram-reverseproxy ./pigram-reverseproxy
+  - docker build -t pigram-api-feed ./pigram-api-feed
+  - docker build -t pigram-api-user ./pigram-api-user
+  - docker build -t pigram-frontend ./pigram-frontend
+
+  - docker tag pigram-reverseproxy "$DOCKER_USERNAME"/pigram-reverseproxy:v1
+  - docker tag pigram-api-feed "$DOCKER_USERNAME"/pigram-api-feed:v1
+  - docker tag pigram-api-user "$DOCKER_USERNAME"/pigram-api-user:v1
+  - docker tag pigram-frontend "$DOCKER_USERNAME"/pigram-frontend:v1
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push "$DOCKER_USERNAME"/pigram-reverseproxy:v1
+  - docker push "$DOCKER_USERNAME"/pigram-api-feed:v1
+  - docker push "$DOCKER_USERNAME"/pigram-api-user:v1
+  - docker push "$DOCKER_USERNAME"/pigram-frontend:v1
