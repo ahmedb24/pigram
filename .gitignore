@@ -43,3 +43,4 @@ venv/
 
 #Env
 set_env.sh
+.npmrc

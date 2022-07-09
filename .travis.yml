@@ -14,7 +14,7 @@ before_script:
   - echo "no tests"
 
 script:
-  - docker --version # print the version for logging
+  - docker --version # print version for logging
   - docker build -t pigram-reverseproxy ./pigram-reverseproxy
   - docker build -t pigram-api-feed ./pigram-api-feed
   - docker build -t pigram-api-user ./pigram-api-user
