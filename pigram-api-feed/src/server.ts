@@ -38,7 +38,6 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     preflightContinue: true,
     origin: '*',
   }));
-
   
   app.use('/api/v0/', IndexRouter);
 
@@ -46,7 +45,6 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
   app.get( '/', async ( req, res ) => {
     res.send( '/api/v0/' );
   } );
-
 
   // Start the Server
   app.listen( port, () => {
