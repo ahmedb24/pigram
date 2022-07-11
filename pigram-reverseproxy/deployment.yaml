@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pigram-reverseproxy
+  labels:
+    app: pigram-reverseproxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pigram-reverseproxy
+  template:
+    metadata:
+      labels:
+        app: pigram-reverseproxy
+    spec:
+      containers:
+        - name: pigram-reverseproxy
+          image: ahmedbello/pigram-reverseproxy:v1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080

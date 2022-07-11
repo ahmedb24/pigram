@@ -1,12 +1,13 @@
 import cors from 'cors';
 import express from 'express';
-import {sequelize} from './sequelize';
+import sequelize from './sequelize';
 
-import {IndexRouter} from './controllers/v0/index.router';
+import { IndexRouter } from './controllers/v0/index.router';
 
 import bodyParser from 'body-parser';
-import {config} from './config/config';
-import {V0_FEED_MODELS} from './controllers/v0/model.index';
+import { config } from './config/config';
+import { V0_FEED_MODELS } from './controllers/v0/model.index';
+import { sleep } from './helpers';
 
 
 (async () => {
@@ -17,7 +18,7 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
   try {
     await sequelize.sync();
   } catch (error) {
-    console.log('You need to check this!!! \n', error);    
+    console.log('You need to check this!!! \n', error);
   }
 
   const app = express();
@@ -38,17 +39,27 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     preflightContinue: true,
     origin: '*',
   }));
-  
-  app.use('/api/v0/', IndexRouter);
 
+  app.use('/api/v0/', IndexRouter);
+  
   // Root URI call
-  app.get( '/', async ( req, res ) => {
-    res.send( '/api/v0/' );
-  } );
+  app.get('/', async (req, res) => {
+    let pid = uuidv4();
+    
+    console.log(new Date().toLocaleString() + `: ${pid} - User ${pid} requested for resource`);
+    sleep(Math.random() * 10000).then(() => {
+      console.log(new Date().toLocaleString() + `: ${pid} - Finished processing request for ${pid}`);
+    })
+    res.send('/api/v0/');
+  });
 
   // Start the Server
-  app.listen( port, () => {
-    console.log( `server running ${config.url}` );
-    console.log( `press CTRL+C to stop server` );
-  } );
+  app.listen(port, () => {
+    console.log(`server running ${config.url}`);
+    console.log(`press CTRL+C to stop server`);
+  });
 })();
+function uuidv4() {
+  throw new Error('Function not implemented.');
+}
+

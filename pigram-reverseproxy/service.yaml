@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pigram-reverseproxy
+  name: pigram-reverseproxy-svc
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/pigram-reverseproxy-svc
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: pigram-reverseproxy
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
