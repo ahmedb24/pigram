@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pigram-frontend
+  labels:
+    app: pigram-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pigram-frontend
+  template:
+    metadata:
+      labels:
+        app: pigram-frontend
+    spec:
+      containers:
+        - name: pigram-frontend
+          image: ahmedbello/pigram-frontend:v1
+          env:
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: POSTGRES_USERNAME
+                  optional: false
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: POSTGRES_PASSWORD
+                  optional: false
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: POSTGRES_HOST
+                  optional: false
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: POSTGRES_DB
+                  optional: false
+            - name: AWS_BUCKET
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: AWS_BUCKET
+                  optional: false
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: AWS_REGION
+                  optional: false
+            - name: AWS_PROFILE
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: AWS_PROFILE
+                  optional: false
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: JWT_SECRET
+                  optional: false
+            - name: URL
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: URL
+                  optional: false
+          ports:
+            - containerPort: 8080

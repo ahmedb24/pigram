@@ -41,6 +41,12 @@ venv/
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 
+#Workflows
+.github/*
+
 #Env
 set_env.sh
 .npmrc
+aws-secret.yaml
+env-configmap.yaml
+env-secret.yaml
