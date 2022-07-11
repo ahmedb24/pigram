@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pigram-api-user
+  labels:
+    app: pigram-api-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pigram-api-user
+  template:
+    metadata:
+      labels:
+        app: pigram-api-user
+    spec:
+      containers:
+        - name: pigram-api-user
+          image: ahmedbello/pigram-api-user:v1
+          ports:
+            - containerPort: 8080
