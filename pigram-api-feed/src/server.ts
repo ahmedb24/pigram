@@ -17,7 +17,7 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
   try {
     await sequelize.sync();
   } catch (error) {
-    console.log('You need to check this!!! \n' + Error);    
+    console.log('You need to check this!!! \n', error);    
   }
 
   const app = express();
@@ -38,14 +38,13 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     preflightContinue: true,
     origin: '*',
   }));
-
+  
   app.use('/api/v0/', IndexRouter);
 
   // Root URI call
   app.get( '/', async ( req, res ) => {
     res.send( '/api/v0/' );
   } );
-
 
   // Start the Server
   app.listen( port, () => {
