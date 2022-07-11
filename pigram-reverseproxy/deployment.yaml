@@ -17,5 +17,6 @@ spec:
       containers:
         - name: pigram-reverseproxy
           image: ahmedbello/pigram-reverseproxy:v1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
