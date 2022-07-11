@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize-typescript';
-import { Dialect } from 'sequelize/types';
 import { config } from './config/config';
 
 const USERNAME = config.username.trim()
