@@ -17,6 +17,7 @@ spec:
       containers:
         - name: pigram-api-feed
           image: ahmedbello/pigram-api-feed:v1
+          imagePullPolicy: Always
           env:
             - name: POSTGRES_USERNAME
               valueFrom:
