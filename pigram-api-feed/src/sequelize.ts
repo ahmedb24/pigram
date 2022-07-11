@@ -11,4 +11,5 @@ export const sequelize = new Sequelize(
     'host': config.host,
     'dialect': config.dialect as Dialect,
     'storage': ':memory:',
+    'port': 5432
   });
