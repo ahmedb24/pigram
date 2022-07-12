@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appName: 'Pigram',
-  apiHost: 'http://localhost:8080/api/v0'
+  apiHost: 'http://ace32c56496bd43038a61a82aa33d409-1858530224.us-east-1.elb.amazonaws.com:8080/api/v0'
 };
 
 /*
