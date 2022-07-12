@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');;
 import cors from 'cors';
 import express from 'express';
 import sequelize from './sequelize';
@@ -59,7 +60,3 @@ import { sleep } from './helpers';
     console.log(`press CTRL+C to stop server`);
   });
 })();
-function uuidv4() {
-  throw new Error('Function not implemented.');
-}
-
