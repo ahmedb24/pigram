@@ -15,7 +15,7 @@ export const s3 = new AWS.S3({
   params: {Bucket: AWS_MEDIA_BUCKET},
 });
 
-// Generates an AWS signed URL for retrieving objects
+// Generates an AWS Signed URL for retrieving objects
 export function getGetSignedUrl( key: string ): string {
   const signedUrlExpireSeconds = 60 * 5;
 
